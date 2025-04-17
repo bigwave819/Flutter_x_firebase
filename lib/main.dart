@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter_x_firebase/main_page.dart';
+import 'package:flutter_x_firebase/auth/main_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
