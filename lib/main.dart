@@ -6,18 +6,22 @@ import 'package:flutter_x_firebase/auth/main_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
-    await Firebase.initializeApp(
-      options: FirebaseOptions(
-        apiKey: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58",
-        authDomain: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58.firebaseapp.com",
-        projectId: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58",
-        storageBucket: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58.appspot.com",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "1:746515235078:android:554f655941a3df9c65de87",
-      ),
-    );
+     if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58",
+          authDomain: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58.firebaseapp.com",
+          projectId: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58",
+          storageBucket: "AIzaSyAEOWw03TkIXy8z-rOtP4QejWuVfBeQC58.appspot.com",
+          messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+          appId: "1:746515235078:android:554f655941a3df9c65de87",
+        ),
+      );
+    }
   } else {
-    await Firebase.initializeApp(); // Android & iOS can use default
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(); // Android/iOS
+    }
   }
   // await Firebase.initializeApp();
   runApp(const MyApp());
